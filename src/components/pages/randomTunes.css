@@ -1,9 +1,89 @@
-.tunesBlock {
-  height: 14em;
 
-  margin-block: 4em;
+/* Conteneur principal */
+.tunes {
+  background-color: #fdf18c33;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+
   text-align: center;
-  }
+  transition: transform 0.3s ease;
 
+  margin-block: 7em;
+  margin-inline: auto;
 
-  
+  padding-block: 3em;
+
+}
+
+.tunes:hover {
+  transform: translateY(-5px);
+}
+
+/* Style pour le titre */
+h1 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Style du bouton */
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:active {
+  background-color: #3e8e41;
+}
+
+/* Style pour les informations */
+p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 10px 0;
+}
+
+/* Style pour la progression d'accords et échelles */
+p:first-of-type {
+  font-weight: bold;
+  color: #000;
+}
+
+p:last-of-type {
+  font-style: italic;
+  color: #777;
+}
+
+/* Ajout d'un espace entre chaque élément */
+p + p {
+  margin-top: 15px;
+}
+
+/* Style pour l'affichage des accords */
+p:nth-child(2), p:nth-child(3), p:nth-child(4) {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Style pour l'état de chargement (si vous le souhaitez) */
+.loading {
+  font-size: 1.2rem;
+  color: #777;
+  font-style: italic;
+  margin-top: 20px;
+}

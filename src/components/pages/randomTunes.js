@@ -1,85 +1,100 @@
-import React, { useState } from "react";
-import '../pages/randomTunes.css';
+import React, { useState } from 'react';
+import { Key, Scale } from 'tonal';
 
-// Accords majeurs et mineurs
-const accordsMajeurs = ["C", "D", "E", "F", "G", "A", "B"];
-const accordsMineurs = ["Cm", "Dm", "Em", "Fm", "Gm", "Am", "Bm"];
+import "../pages/randomTunes.css";
 
-// Fonction pour générer une progression d'accords
-const genererProgression = () => {
-  const progressionsPossibles = [
-    ["I", "IV", "V", "I"], // I - IV - V - I
-    ["ii", "V", "I"], // ii - V - I
-    ["I", "vi", "IV", "V"], // I - vi - IV - V
-    ["I", "V", "vi", "IV"], // I - V - vi - IV
+const RandomTunesComponent = () => {
+  const [choixGamme, setChoixGamme] = useState(null);
+  const [choixModalite, setChoixModalite] = useState(null);
+  const [resultado, setResultado] = useState("");
+  const [chordsProgression, setChordsProgression] = useState("");
+  const [chordsInMinor, setChordsInMinor] = useState("");
+  const [chordsInMajor, setChordsInMajor] = useState("");
+  const [showChords, setShowChords] = useState(false); // Etat pour contrôler l'affichage des accords
+
+  const objNotesMineur = [
+    { note: "A", position: 1 },
+    { note: "A#", position: 2 },
+    { note: "B", position: 3 },
+    { note: "C", position: 4 },
+    { note: "C#", position: 5 },
+    { note: "D", position: 6 },
+    { note: "D#", position: 7 },
+    { note: "E", position: 8 },
+    { note: "F", position: 9 },
+    { note: "F#", position: 10 },
+    { note: "G", position: 11 },
+    { note: "G#", position: 12 }
   ];
 
-  // Choisir une progression aléatoire
-  const progressionChoisie =
-    progressionsPossibles[
-      Math.floor(Math.random() * progressionsPossibles.length)
-    ];
+  // Fonction pour générer les accords
+  const chosenGamme = () => {
+    // Randomly pick a note from objNotesMineur
+    const randomNote = objNotesMineur[Math.floor(Math.random() * 12)].note;
+    setChoixGamme(randomNote);
 
-  // Choisir une tonalité aléatoire (par exemple Do majeur)
-  const tonalite =
-    accordsMajeurs[Math.floor(Math.random() * accordsMajeurs.length)];
+    // Randomly pick a scale (major or minor)
+    const randomModalite = Math.floor(Math.random() * 2);
+    setChoixModalite(randomModalite);
 
-  // Fonction pour obtenir un accord en fonction de la tonalité
-  const getAccord = (type) => {
-    const index = accordsMajeurs.indexOf(tonalite);
+    const modalite = randomModalite === 0 ? "major" : "minor";
+    console.log(modalite);
+    setResultado(`${randomNote} ${modalite}`);
+    console.log(`Result: ${randomNote} ${modalite}`);
 
-    switch (type) {
-      case "I":
-        return accordsMajeurs[index];
-      case "IV":
-        return accordsMajeurs[(index + 3) % accordsMajeurs.length];
-      case "V":
-        return accordsMajeurs[(index + 4) % accordsMajeurs.length];
-      case "vi":
-        return accordsMineurs[(index + 5) % accordsMajeurs.length];
-      case "ii":
-        return accordsMineurs[(index + 1) % accordsMajeurs.length];
-      default:
-        return tonalite;
+    // Generate chord progression
+    const choixEtModalite = Scale.degrees(`${randomNote} ${modalite}`);
+    console.log(choixEtModalite(1), choixEtModalite(4), choixEtModalite(1), choixEtModalite(5));
+    const progression = `${choixEtModalite(1)} ${choixEtModalite(4)} ${choixEtModalite(1)} ${choixEtModalite(5)}`;
+    setChordsProgression(progression);
+    console.log("Chord Progression: ", progression);
+
+    // Major and minor chords
+    const majorTriads = Key.majorKey(randomNote).triads;
+    const minorTriads = Key.minorKey(randomNote).natural.triads;
+
+    console.log("Major Key: ", majorTriads);
+    console.log("Minor Key: ", minorTriads);
+
+    const majorChords = `${majorTriads[0]} ${majorTriads[3]} ${majorTriads[0]} ${majorTriads[4]}`;
+    const minorChords = `${minorTriads[0]} ${minorTriads[3]} ${minorTriads[0]} ${minorTriads[4]}`;
+
+    setChordsInMajor(majorChords);
+    setChordsInMinor(minorChords);
+
+    if (modalite === "major") {
+      console.log("Major Chords");
+      setChordsProgression(majorChords);
     }
-  };
+    if (modalite === "minor") {
+      console.log("Minor Chords");
+      setChordsProgression(minorChords);
+    }
 
-  // Construire la progression d'accords
-  const progression = progressionChoisie.map((acc) => getAccord(acc));
-  console.log("progression!: ", progression[0]);
-  return progression.join(" - ");
-};
-
-const RandonTunes = () => {
-  const [progression, setProgression] = useState("");
-
-  // Générer une nouvelle progression d'accords
-  const handleGenerate = () => {
-    const nouvelleProgression = genererProgression();
-    setProgression(nouvelleProgression);
+    // Afficher les accords uniquement après avoir généré les résultats
+    setShowChords(true); // Cela déclenche l'affichage des accords
   };
 
   return (
-    <div className="container">
-    <div className="row">
-      <div className="col-md-12">
-        <h1>Randon Tunes generator</h1>
-      <div className="d-flex flex-column justify-content-around tunesBlock">
-        <button onClick={handleGenerate} className="mx-auto generate-button">
-          Générer
-        </button>
-        {progression && (
-          <div className="progression-display">
-            
-            <p>Progression : {progression}</p>
-          </div>
-        )}
+    <div className="container d-flex flex-column my-5">
+      <div className="row">
+      <h1>Random Tunes Generator</h1>
+      <div className='col-12 col-md-8 tunes mt-5 vw-75 m-auto d-flex flex-column'>
+      <button className='mb-5' onClick={chosenGamme}>Generate Chords</button>
+
+      {/* Afficher les résultats conditionnellement en fonction de showChords */}
+      {showChords && (
+        <div className='d-flex flex-column '>
+          <p className=''>Selected Scale: {resultado}</p>
+          <p>Chord Progression: {chordsProgression}</p>
+  {/*         <p>Major Chords: {chordsInMajor}</p>
+          <p>Minor Chords: {chordsInMinor}</p> */}
+        </div>
+      )}
       </div>
     </div>
     </div>
-    </div>
-    
   );
 };
 
-export default RandonTunes;
+export default RandomTunesComponent;
