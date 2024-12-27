@@ -1,0 +1,42 @@
+
+/* -------------------------------------- NAVBAR ---------------------------------------*/
+
+.nav-item {
+    padding-inline: 2em;
+      background-color: fuchsia;
+  }
+  
+  /* a.nav-link   {
+    color: white;
+  } */
+  
+  a.nav-link.active:hover,
+  a#basic-nav-dropdown:hover {
+    color: rgb(42, 165, 65);
+  }
+  
+  /* 
+  #basic-nav-dropdown {
+    color: rgb(230, 26, 26);
+  } */
+  
+  .dropdown-menu.show {
+    background-color: rgba(254, 254, 254, 0.973);
+    /* color: blue; */
+    border: none;
+  /*   border-radius: 1px; */
+  /*   height: 27vh; */
+  /*   padding: inherit; */
+    padding-top: inherit;
+    padding-top: 1em;
+  }
+  
+  a.dropdown-item:hover {
+    background-color: rgba(18, 222, 154, 0);
+  }
+  
+  .LogoNav {
+    width: 14em;
+    padding: 20px;
+  
+  }
