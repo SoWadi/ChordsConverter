@@ -34,8 +34,8 @@ function App() {
             element={<Converter />} />
 
 
-            <Route exact path="/" 
-            element={<RandomTunes />} />
+           {/*  <Route exact path="/" 
+            element={<RandomTunes />} /> */}
           
           </Routes>
         </main>

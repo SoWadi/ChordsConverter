@@ -1,7 +1,6 @@
-
 /* Conteneur principal */
 .tunes {
-  background-color: #fdf18c33;
+  background-color: #f9f8f273;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
@@ -30,21 +29,27 @@ h1 {
 }
 
 /* Style du bouton */
-button {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 1rem;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 20px;
+.btnGenerate {
+  font-size: 1.5em;
+  font-weight: 600;
+  padding-inline: 3rem;
+  box-shadow: 10px 10px;
+  background: #63bf7c
+    /* #a3ffc3 */
+  ;
+  color: #162029ed;
+  text-decoration: none;
 }
 
-button:hover {
-  background-color: #45a049;
+
+.btnGenerate:hover {
+  background: rgb(247, 227, 6);
 }
+
+
+/* button:hover {
+  background-color: #45a049;
+} */
 
 button:active {
   background-color: #3e8e41;
@@ -69,12 +74,14 @@ p:last-of-type {
 }
 
 /* Ajout d'un espace entre chaque élément */
-p + p {
+p+p {
   margin-top: 15px;
 }
 
 /* Style pour l'affichage des accords */
-p:nth-child(2), p:nth-child(3), p:nth-child(4) {
+p:nth-child(2),
+p:nth-child(3),
+p:nth-child(4) {
   font-size: 1.2rem;
   color: #333;
   font-weight: 600;

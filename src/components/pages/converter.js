@@ -35,9 +35,9 @@ function TransposeChordPage() {
   };
 
   return (
-    <div className="container d-flex justify-content-center">
+    <div className="container d-flex justify-content-center my-5">
       <div className="row">
-        <div className="col-md-12 mb-5">
+        <div className="col-md-12">
           <h1 className="mb-5">Outil de Transposition de Tablature</h1>
 
           <textarea
