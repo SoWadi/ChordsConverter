@@ -109,13 +109,11 @@ const RandomTunesComponent = () => {
         <h1>Random Tunes Generator</h1>
         <div className="col-12 col-md-8 tunes mt-5 vw-75 m-auto d-flex flex-column">
           <button
-            className="bg-none mx-auto my-5 btnGenerate"
+            className="bg-none mx-auto my-5 btnGenerate d-flex "
             onClick={handleClick}
           >
             Generate Chords
-          </button>
-
-          <div className="flex items-center justify-center min-h-screen bg-gray-100 mb-5">
+            
             {loading ? (
               <div className="loader"></div>
             ) : (
@@ -123,7 +121,17 @@ const RandomTunesComponent = () => {
                 {/* <p> condition is false</p> */}
               </div>
             )}
-          </div>
+          </button>
+
+          {/* <div className="flex items-center justify-center min-h-screen bg-gray-100 mb-5">
+            {loading ? (
+              <div className="loader"></div>
+            ) : (
+              <div className="p-6 bg-white shadow-lg rounded-xl text-center">
+                
+              </div>
+            )}
+          </div> */}
 
           {/* Afficher les résultats conditionnellement en fonction de showChords */}
           {showChords && (

@@ -64,7 +64,7 @@ p {
 
 /* Style pour la progression d'accords et échelles */
 p:first-of-type {
-  font-weight: bold;
+  font-weight:500;
   color: #000;
 }
 
@@ -96,17 +96,20 @@ p:nth-child(4) {
 } */
 
 .loader {
-  width: 20px;
+  width: 24px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: #f2e600;
+  background: #1ad14b;
   box-shadow: 0 0 0 0 #0004;
   animation: l1 1s infinite;
   margin-inline: auto;
+  height: 24px;
+  margin-left: 20px;
+  margin-top: 8px;
 }
 
 @keyframes l1 {
   100% {
-    box-shadow: 0 0 0 30px #0ddd33ae;
+    box-shadow: 0 0 0 30px #ecdd053f;
   }
 }
