@@ -69,7 +69,7 @@ p:first-of-type {
 }
 
 p:last-of-type {
-  font-style: italic;
+  font-style: normal;
   color: #777;
 }
 
@@ -88,9 +88,25 @@ p:nth-child(4) {
 }
 
 /* Style pour l'état de chargement (si vous le souhaitez) */
-.loading {
+/* .loading {
   font-size: 1.2rem;
   color: #777;
   font-style: italic;
   margin-top: 20px;
+} */
+
+.loader {
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #f2e600;
+  box-shadow: 0 0 0 0 #0004;
+  animation: l1 1s infinite;
+  margin-inline: auto;
+}
+
+@keyframes l1 {
+  100% {
+    box-shadow: 0 0 0 30px #0ddd33ae;
+  }
 }

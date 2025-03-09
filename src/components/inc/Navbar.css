@@ -1,14 +1,17 @@
 
 /* -------------------------------------- NAVBAR ---------------------------------------*/
 
+
+ .containerNav {
+border: 3px solid rgb(137, 250, 114);
+background-color: aqua;
+}
+
 .nav-item {
     padding-inline: 2em;
       background-color: fuchsia;
   }
-  
-  /* a.nav-link   {
-    color: white;
-  } */
+
   
   a.nav-link.active:hover,
   a#basic-nav-dropdown:hover {
@@ -35,8 +38,3 @@
     background-color: rgba(18, 222, 154, 0);
   }
   
-  .LogoNav {
-    width: 14em;
-    padding: 20px;
-  
-  }

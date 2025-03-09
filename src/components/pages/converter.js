@@ -68,7 +68,7 @@ function TransposeChordPage() {
             <div className="col-md-12 output-area">
               <h2>Tablature Transposée :</h2>
               <textarea
-                rows="40"
+                rows="14"
                 cols="24"
                 value={transposedText}
                 readOnly

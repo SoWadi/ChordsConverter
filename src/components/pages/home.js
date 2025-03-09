@@ -41,27 +41,28 @@ function Home() {
   return (
     <div className="container-fluid d-flex flex-column">
       <div className="row">
-        <section className="parallax" id="parallax1"></section>
-        <div className="col-md-8 pb-5 mx-auto my-5 text-center d-flex flex-column">
+        <section className="parallax pt-4" id="parallax1">
+        <div className="col-md-8 mx-auto my-5 mt-5 text-center d-flex flex-column hero">
           {/* <h1 className="main-heading">
                   
                   Linda Avlessi
                   <hr className="w-25 mx-auto" />
                 </h1> */}
-          <h1>"Libérez votre créativité musicale avec notre application ! 🎶</h1>
-          <p className="col-8 lorem">
+          <h2 className="fw-bold">Libérez votre créativité musicale avec notre application ! 🎶</h2>
+          <p className="col-md-6 text-white text-align-center m-auto mt-5 w-75">
           
           Transformez des accords en un clin d'œil et générez des progressions inspirantes pour vos sessions d'improvisation. Que vous soyez entre amis ou en solo, créez l'ambiance parfaite en quelques clics. Explorez, jouez, improvisez : la musique n'a jamais été aussi accessible. 🚀✨
           </p>
+
+
+        </div>
+        </section>
 
           <a className="containerArrow mb-1" href="#more">
             <li className="chevron"></li>
             <li className="chevron"></li>
             <li className="chevron"></li>
           </a>
-
-
-        </div>
         {/*         <section className="parallax" id="parallax2"></section> */}
         <div className="my-5 secondBlock" id="more">
           <TransposeChordPage></TransposeChordPage>
@@ -77,14 +78,12 @@ function Home() {
 
         <section className="parallax d-flex flex-column my-auto" id="parallax2">
           <div className="row my-auto">
-            <p className="col-md-6 text-white text-align-center m-auto mt-5 p-5 bg-dark bg-opacity-25">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s,
+            <p className="col-md-6 text-white text-align-center m-auto mt-5 p-4 lastPart">
+         🎶 Générez des suites d'accords et jouez avec vos amis ! Trouvez l'inspiration instantanément et créez des progressions harmonieuses pour vos sessions musicales. 🎸
             </p>
             <button className="bg-none mx-auto mt-5">
               <a className="toRandomTunes" href="/tunes">
-                Initiate your jam
+                Commence à jammer!
               </a>
             </button>
           </div>

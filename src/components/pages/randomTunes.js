@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Key, Scale } from 'tonal';
+import React, { useState, useEffect } from "react";
+import { Key, Scale } from "tonal";
 
 import "../pages/randomTunes.css";
 
@@ -24,11 +24,32 @@ const RandomTunesComponent = () => {
     { note: "F", position: 9 },
     { note: "F#", position: 10 },
     { note: "G", position: 11 },
-    { note: "G#", position: 12 }
+    { note: "G#", position: 12 },
   ];
+
+  const [loading, setLoading] = useState(true);
+
+  /*   useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+   */
+
+  const handleClick = () => {
+    setLoading(true); // Afficher le loader immédiatement
+    setTimeout(() => {
+      // Exécuter la fonction principale après un court délai
+      chosenGamme();
+
+      // Cacher le loader après l'exécution
+      setLoading(false);
+    }, 600); // Très court instant (300ms)
+  };
 
   // Fonction pour générer les accords
   const chosenGamme = () => {
+    console.log("Action principale exécutée !");
     // Randomly pick a note from objNotesMineur
     const randomNote = objNotesMineur[Math.floor(Math.random() * 12)].note;
     setChoixGamme(randomNote);
@@ -44,8 +65,15 @@ const RandomTunesComponent = () => {
 
     // Generate chord progression
     const choixEtModalite = Scale.degrees(`${randomNote} ${modalite}`);
-    console.log(choixEtModalite(1), choixEtModalite(4), choixEtModalite(1), choixEtModalite(5));
-    const progression = `${choixEtModalite(1)} ${choixEtModalite(4)} ${choixEtModalite(1)} ${choixEtModalite(5)}`;
+    console.log(
+      choixEtModalite(1),
+      choixEtModalite(4),
+      choixEtModalite(1),
+      choixEtModalite(5)
+    );
+    const progression = `${choixEtModalite(1)} ${choixEtModalite(
+      4
+    )} ${choixEtModalite(1)} ${choixEtModalite(5)}`;
     setChordsProgression(progression);
     console.log("Chord Progression: ", progression);
 
@@ -72,28 +100,47 @@ const RandomTunesComponent = () => {
     }
 
     // Afficher les accords uniquement après avoir généré les résultats
-    setShowChords(true); // Cela déclenche l'affichage des accords
+    setShowChords(true); // Déclenche l'affichage des accords
   };
 
   return (
     <div className="container d-flex flex-column my-5">
       <div className="row">
-      <h1>Random Tunes Generator</h1>
-      <div className='col-12 col-md-8 tunes mt-5 vw-75 m-auto d-flex flex-column'>
-      <button className='bg-none mx-auto my-5 btnGenerate' onClick={chosenGamme}>Generate Chords</button>
+        <h1>Random Tunes Generator</h1>
+        <div className="col-12 col-md-8 tunes mt-5 vw-75 m-auto d-flex flex-column">
+          <button
+            className="bg-none mx-auto my-5 btnGenerate"
+            onClick={handleClick}
+          >
+            Generate Chords
+          </button>
 
-      {/* Afficher les résultats conditionnellement en fonction de showChords */}
-      {showChords && (
-        <div className='d-flex flex-column'>
-          <p>Selected Scale: {resultado}</p>
-          <p>Chord Progression:</p>
-          <p className='fs-3 bg-light bg-opacity-25'> {chordsProgression}</p>
-  {/*         <p>Major Chords: {chordsInMajor}</p>
+          <div className="flex items-center justify-center min-h-screen bg-gray-100 mb-5">
+            {loading ? (
+              <div className="loader"></div>
+            ) : (
+              <div className="p-6 bg-white shadow-lg rounded-xl text-center">
+                {/* <p> condition is false</p> */}
+              </div>
+            )}
+          </div>
+
+          {/* Afficher les résultats conditionnellement en fonction de showChords */}
+          {showChords && (
+            <div className="d-flex flex-column">
+{/*               <p className="fs-4" >Progression:</p> */}
+              <p className="fs-3 bg-warning bg-opacity-50 rounded-pill w-75 mx-auto h-25">
+                {" "}
+                {chordsProgression}
+              </p>
+              <p>Gamme: {resultado}</p>
+              {/*         <p>Major Chords: {chordsInMajor}</p>
           <p>Minor Chords: {chordsInMinor}</p> */}
+            </div>
+          )}
+          
         </div>
-      )}
       </div>
-    </div>
     </div>
   );
 };

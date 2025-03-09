@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LogoNav from "../pages/images/logo.svg";
 
 /* import { NavDropdown } from "react-bootstrap"; */
 /* import "../../../src/components/inc/Navbar.css"; */
@@ -7,17 +8,21 @@ import "../../../src/App.css";
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg"  id="upPage">
-      <div className="container containerNav">
+    <nav className="navbar navbar-expand-lg shadow" id="upPage">
+      <div className="container containerNav navbar navbar-expand-lg w-75">
         {/* <a className="" href="/">
           Navbar
         </a> */}
-        {/*         <div>
-          <Link to="/" className="navbar-brand">
-            <img className="LogoNav" src={LogoNav} alt="Reactiserv"></img>
-          </Link>
-        </div> */}
-                <button
+<div>
+            <Link to="/" className="navbar-brand">
+              <img
+                className="w-50 LogoNav"
+                src={LogoNav}
+                alt="Reactiserv"
+              ></img>
+            </Link>
+          </div>
+        <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
@@ -29,8 +34,9 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ms-auto mb-2 mx-auto mb-lg-0">
-            <li className="nav-item navLink">
+          
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li className="nav-item navLink px-3">
               <Link to="/home" className="nav-link active">
                 Accueil
               </Link>
@@ -67,7 +73,7 @@ function Navbar() {
             </div> 
 */}
 
-            <li className="nav-item">
+            <li className="nav-item px-3">
               <Link to="/converter" className="nav-link active">
                 Converter
               </Link>
@@ -78,12 +84,12 @@ function Navbar() {
                 À propos
               </Link>
             </li> */}
-            <li className="nav-item">
+            <li className="nav-item px-3">
               <Link to="/tunes" className="nav-link active">
                 Random Tunes
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item px-3">
               <Link to="/contact" className="nav-link active">
                 Contact
               </Link>

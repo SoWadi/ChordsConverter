@@ -24,8 +24,8 @@ textarea {
   resize: none;
   box-sizing: border-box;
   transition: border-color 0.3s ease;
-
-  width: inherit;
+/* 
+  width: auto; */
   padding-inline-start: 2em;
 }
 
